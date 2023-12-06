@@ -20,7 +20,6 @@
 <header>
     <p>QuickSearch</p>
 </header>
-
 <?php
 if (isset($_GET['query'])) {
     $query = $_GET['query'];
@@ -47,7 +46,6 @@ if (isset($_GET['query'])) {
                 echo "<p><a href='{$item->link}' target='_blank'>{$item->title}</a></p>";
                 echo "<p>{$item->snippet}</p>";
 
-                // Check if 'pagemap' and 'cse_thumbnail' are present
                 if (isset($item->pagemap->cse_thumbnail[0]->src)) {
                     $imageSrc = $item->pagemap->cse_thumbnail[0]->src;
                     echo "<img src='$imageSrc' alt='Image'>";
