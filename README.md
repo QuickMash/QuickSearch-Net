@@ -7,3 +7,4 @@ quickmash@quickmashstudios.com
 --------------------------------------------
 The site is live at
 HTTPS://Quickmashtudios.com/quicksearch
+--------------------------------------------
