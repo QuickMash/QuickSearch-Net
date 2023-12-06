@@ -6,7 +6,6 @@
     <title>Search Results</title>
     <link rel="stylesheet" href="general.css">
     <style>
-        /* Your styles here */
         img {
             max-width: <?php echo isset($_GET['imgWidth']) ? (int)$_GET['imgWidth'] : 100; ?>px;
             max-height: <?php echo isset($_GET['imgHeight']) ? (int)$_GET['imgHeight'] : 100; ?>px;
@@ -30,26 +29,17 @@ if (isset($_GET['query'])) {
     echo "<h2>Search Result:</h2>";
     echo "<p>You are redirected to: <a href='$query' target='_blank'>$query</a></p>";
 
-    // Add more HTML content or processing as needed
-
-    // Debug: Output the raw JSON response
     $apiKey = 'no6t7a7real9api8key-ad7d8yours8here8'; // Replace with your actual API key
     $cx = 'e6xam9p7le'; // Replace with your actual Custom Search Engine ID
     $url = "https://www.googleapis.com/customsearch/v1?q=" . urlencode($query) . "&key=$apiKey&cx=$cx&start=$startIndex";
     
     $response = file_get_contents($url);
 
-    // Debug: Output error information if fetching fails
     if ($response === FALSE) {
         echo '<p>Error fetching search results. Please try again later.</p>';
         echo '<p>Error details: ' . error_get_last()['message'] . '</p>';
     } else {
         $data = json_decode($response);
-
-        // Debug: Output the raw JSON response
-        // echo '<pre>';
-        // echo json_encode($data, JSON_PRETTY_PRINT);
-        // echo '</pre>';
 
         if (isset($data->items) && !empty($data->items)) {
             echo '<h2>Search Results:</h2>';
