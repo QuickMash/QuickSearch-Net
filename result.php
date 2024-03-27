@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results</title>
+    <title>Search Results - QuickSearch</title>
     <link rel="stylesheet" href="general.css">
     <style>
         img {
@@ -18,15 +18,15 @@
 </head>
 <body>
 <header>
-    <p>QuickSearch</p>
+    <h1>QuickSearch Net 1</h1>
 </header>
 <?php
 if (isset($_GET['query'])) {
     $query = $_GET['query'];
     $startIndex = isset($_GET['start']) ? (int)$_GET['start'] : 1;
 
-    echo "<h2>Search Result:</h2>";
-    echo "<p>You are redirected to: <a href='$query' target='_blank'>$query</a></p>";
+    echo "<h2>Results:</h2>";
+    echo "<p>Redirected to: <a href='$query' target='_blank'>$query</a></p>";
 
     $apiKey = 'no6t7a7real9api8key-ad7d8yours8here8'; // Replace with your actual API key
     $cx = 'e6xam9p7le'; // Replace with your actual Custom Search Engine ID
@@ -35,8 +35,8 @@ if (isset($_GET['query'])) {
     $response = file_get_contents($url);
 
     if ($response === FALSE) {
-        echo '<p>Error fetching search results. Please try again later.</p>';
-        echo '<p>Error details: ' . error_get_last()['message'] . '</p>';
+        echo '<p>Cannot get results! Try again later.</p>';
+        echo '<p>An Error has occurred' . error_get_last()['message'] . '</p>';
     } else {
         $data = json_decode($response);
 
@@ -48,7 +48,7 @@ if (isset($_GET['query'])) {
 
                 if (isset($item->pagemap->cse_thumbnail[0]->src)) {
                     $imageSrc = $item->pagemap->cse_thumbnail[0]->src;
-                    echo "<img src='$imageSrc' alt='Image'>";
+                    echo "<img title='Search Image' src='$imageSrc' alt='Image'>";
                 }
 
                 echo '<hr>';
@@ -64,7 +64,7 @@ if (isset($_GET['query'])) {
         }
     }
 } else {
-    echo '<p>No result URL specified.</p>';
+    echo '<p>That URL does not exist</p>';
 }
 ?>
 <footer>
